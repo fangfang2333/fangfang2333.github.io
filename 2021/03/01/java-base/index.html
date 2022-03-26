@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基本数据类型和引用数据类型基本数据类型Java中有八种基本数据类型，都是Java语言预先定义好的，并且是关键字。 这八种基本类型分别是：  整型 （4种）byte，short，int，long 字符型 （1种）char 浮点型 （2种）float，double 布尔型（1种）boolean     No. 数据类型 大小&#x2F;位 可表示数据范围 默认值    1 byte（字节型） 8 -1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-基本类型与面向对象">
+<meta property="og:url" content="http://example.com/2021/03/01/java-base/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="基本数据类型和引用数据类型基本数据类型Java中有八种基本数据类型，都是Java语言预先定义好的，并且是关键字。 这八种基本类型分别是：  整型 （4种）byte，short，int，long 字符型 （1种）char 浮点型 （2种）float，double 布尔型（1种）boolean     No. 数据类型 大小&#x2F;位 可表示数据范围 默认值    1 byte（字节型） 8 -1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/java-base/image-20210301185653429.png">
+<meta property="og:image" content="http://example.com/java-base/image-20210301190301584.png">
+<meta property="og:image" content="http://example.com/java-base/image-20210301190926957.png">
+<meta property="og:image" content="http://example.com/java-base/image-20210301205908883.png">
+<meta property="og:image" content="http://example.com/java-base/image-20210301211645206.png">
+<meta property="article:published_time" content="2021-03-01T08:01:37.000Z">
+<meta property="article:modified_time" content="2021-03-28T10:24:22.522Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/java-base/image-20210301185653429.png">
+  
+  
+  <title>Java-基本类型与面向对象 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Java-基本类型与面向对象">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-01 16:01" pubdate>
+        2021年3月1日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java-基本类型与面向对象</h1>
+            
+            <div class="markdown-body">
+              <h2 id="基本数据类型和引用数据类型"><a href="#基本数据类型和引用数据类型" class="headerlink" title="基本数据类型和引用数据类型"></a>基本数据类型和引用数据类型</h2><h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>Java中有<strong>八种基本数据类型</strong>，都是Java语言预先定义好的，并且是关键字。</p>
+<p>这八种基本类型分别是：</p>
+<ul>
+<li>整型 （4种）<code>byte</code>，<code>short</code>，<code>int</code>，<code>long</code></li>
+<li>字符型 （1种）<code>char</code></li>
+<li>浮点型 （2种）<code>float</code>，<code>double</code></li>
+<li>布尔型（1种）<code>boolean</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">No.</th>
+<th align="center">数据类型</th>
+<th align="center">大小&#x2F;位</th>
+<th align="center">可表示数据范围</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"><code>byte</code>（字节型）</td>
+<td align="center">8</td>
+<td align="center">-128~127</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><code>short</code>（短整型）</td>
+<td align="center">16</td>
+<td align="center">-32768~32767</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"><code>int</code>（整型）</td>
+<td align="center">32</td>
+<td align="center">-2147483648~2147483647</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"><code>long</code>（长整型）</td>
+<td align="center">64</td>
+<td align="center">-9223372036854775808~9223372036854775807</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center"><code>float</code>（单精度）</td>
+<td align="center">32</td>
+<td align="center">-3.4E38~3.4E38</td>
+<td align="center">0.0</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center"><code>double</code>（双精度）</td>
+<td align="center">64</td>
+<td align="center">-1.7E308~1.7E308</td>
+<td align="center">0.0</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center"><code>char</code>（字符）</td>
+<td align="center">16</td>
+<td align="center">0~255</td>
+<td align="center">‘\u0000’</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center"><code>boolean</code>（布尔）</td>
+<td align="center">-</td>
+<td align="center">true或false</td>
+<td align="center">false</td>
+</tr>
+</tbody></table>
+<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><p>包括有：类、 接口类型、 数组类型、 枚举类型、 注解类型、 字符串型</p>
+<p><code>String</code> 类型就是<strong>引用类型</strong></p>
+<h3 id="基本、引用-区别"><a href="#基本、引用-区别" class="headerlink" title="基本、引用 区别"></a>基本、引用 区别</h3><ul>
+<li>基本变量类型<ul>
+<li>在方法中定义的<strong>非全局</strong><code>基本数据类型</code>变量的具体内容是<strong>存储在栈中</strong>的</li>
+</ul>
+</li>
+</ul>
+<p><img src="/java-base/image-20210301185653429.png" srcset="/img/loading.gif" lazyload alt="数据在栈和堆中"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">msg</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>    <br>    <span class="hljs-comment">// 在将msg给fun方法时，开辟为temp开辟新的内存空间</span><br>    fun(msg);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> temp)</span>&#123;<br>    temp = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-comment">// 结束调用时释放temp开辟的内存</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/java-base/image-20210301190301584.png" srcset="/img/loading.gif" lazyload alt="栈中状态"></p>
+<ul>
+<li>引用变量类型<ul>
+<li>只要是<code>引用数据类型</code>变量，其<strong>具体内容</strong>都是存放在<strong>堆</strong>中的，而<strong>栈中</strong>存放的是其<strong>具体内容</strong>所在<strong>内存的地址</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>    <span class="hljs-comment">// 1 初态时，初始化book 类型</span><br>    <span class="hljs-type">Book</span> <span class="hljs-variable">book</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Book</span>(<span class="hljs-string">&quot;Java开发指南&quot;</span>,<span class="hljs-number">66.6</span>);<br>    <br>    <span class="hljs-comment">// 2 调用方法：调用时开辟新的temp栈，指向原有引用变量栈堆</span><br>    fun(book);<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fun</span><span class="hljs-params">(Book temp)</span>&#123;<br>    <span class="hljs-comment">// 3 设置值</span><br>    temp.setPrice(<span class="hljs-number">99.9</span>);<br>    <span class="hljs-comment">// 4 结束时释放引用数据类型temp</span><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Book</span>&#123;<br>    String name;<br>    <span class="hljs-type">double</span> price;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Book</span><span class="hljs-params">(String name,<span class="hljs-type">double</span> price)</span>&#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.price = price;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPrice</span><span class="hljs-params">(<span class="hljs-type">double</span> price)</span>&#123;<br>        <span class="hljs-built_in">this</span>.price = price;<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/java-base/image-20210301190926957.png" srcset="/img/loading.gif" lazyload alt="引用类型在堆栈中的位置"></p>
+<p>三种常见的引用时变量赋值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;myString&quot;</span>);<br><span class="hljs-type">String</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;myString&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s3</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;my&quot;</span> + <span class="hljs-string">&quot;String&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>第一种：new</p>
+<ul>
+<li><p>在程序编译期，编译程序先去字符串常量池检查，是否存在“myString”,如果不存在，则在常量池中开辟一个内存空间存放“myString”；</p>
+</li>
+<li><p>（new 时，毫无疑问会在堆中分配内存，创建一个String类对象。s1这个在栈中引用指向是队中的String对象）</p>
+</li>
+<li><p>如果存在的话，则不用重新开辟空间，保证常量池中只有一个“myString”常量，节省内存空间，就只需要创建一个堆中的String对象。</p>
+</li>
+<li><p>然后在内存堆中开辟一块空间存放new出来的String实例，在栈中开辟一块空间，命名为“s1”，存放的值为堆中String实例的内存地址，这个<strong>过程</strong>就是将引用<strong>s1指向new出来的String实例</strong></p>
+</li>
+</ul>
+<p><img src="/java-base/image-20210301205908883.png" srcset="/img/loading.gif" lazyload alt="引用时变量赋值"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;hello&quot;</span>);      <br><span class="hljs-type">String</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br>System.out.println(s1 == s2); <span class="hljs-comment">// false 比较两个引用地址 （s2-&gt; 常量池地址） （s1 -&gt; String对象地址）</span><br>System.out.println(s1.equals(s2)); <span class="hljs-comment">// true  equals()比较字符串的内容</span><br>System.out.println(s1 == s3); <span class="hljs-comment">//false       每个String 对象都不是不同的，引用地址也不同</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>第二种：直接定义</p>
+<ul>
+<li><p>在程序编译期，编译程序先去字符串常量池检查，是否存在“myString”，</p>
+</li>
+<li><p>如果不存在，则在常量池中开辟一个内存空间存放“myString”；如果存在的话，则不用重新开辟空间。</p>
+</li>
+<li><p>然后在栈中开辟一块空间，命名为“s1”，存放的值为常量池中“myString”的内存地址</p>
+</li>
+</ul>
+<p><img src="/java-base/image-20210301211645206.png" srcset="/img/loading.gif" lazyload alt="赋值定义"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br>System.out.println(str1 == str2); <span class="hljs-comment">// 返回true</span><br><span class="hljs-comment">// 因为 == 是判断地址位置。str1没发现hello</span><br><span class="hljs-comment">// 会先到常量池中检查是否有“hello”的存在，发现是没有的，于是在常量池中创建“hello”对象，并将常量池中的引用赋值给str1</span><br><span class="hljs-comment">// 第二个字面量 String str2 = &quot;hello&quot;，在常量池中检测到该对象了，直接将引用赋值给str2</span><br></code></pre></td></tr></table></figure>
+
+<p>第三种：使用+号连接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;a&quot;</span> + <span class="hljs-string">&quot;b&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;ab&quot;</span>;<br>System.out,println(s1 == s2);<span class="hljs-comment">//true  ,s1 和 s2 地址是一样的</span><br></code></pre></td></tr></table></figure>
+
+<p>具体的原理我目前并没有理解透彻，推荐去看《thinking in Java》</p>
+<h4 id="String的intern-方法"><a href="#String的intern-方法" class="headerlink" title="String的intern()方法"></a>String的intern()方法</h4><blockquote>
+<p>转载至《thinking in java》</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sureyonder/article/details/5569366">https://blog.csdn.net/sureyonder/article/details/5569366</a></p>
+<p>如果字符串常量池中已经包含一个等于此String对象的字符串，则返回代表池中这个字符串的String对象；否则，将此String对象包含的字符添加到常量池中，并返回此String对象的引用</p>
+<p>String类的intern()方法可以截留字符串，如果String对象包含的字符序列不在字符串常量内部列表中，那么就把这个String对象包含的字符序列和String对象的引用作为名值对保存到内部列表中，最后intern()返回一个指向String对象本身的引用；如果 String对象包含的字符序列在字符串常量内部列表中，那么就返回列表的名值对中的对应的字符串对象引用，而String对象本身的就会被丢弃</p>
+<p>intern()方法在不同的jdk中有不同的作用分为1.6前和1.7后</p>
+</blockquote>
+<h4 id="String（简单版。233）"><a href="#String（简单版。233）" class="headerlink" title="String（简单版。233）"></a>String（简单版。233）</h4><ul>
+<li>String类型其实<strong>并不是基本类型</strong>，一旦创建就不能够被改变</li>
+<li>String类使用了final修饰符，<strong>不能被继承</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// String类的成员变量定义，不可变</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">char</span> value[];             <br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> count; <br></code></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h3><h4 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h4><ul>
+<li>char类型用于存放一个字符，值用单引号’表示 (双引号表示字符串)</li>
+<li>其长度和short一样，也是16位的</li>
+</ul>
+<h4 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h4><ul>
+<li>float 长度为32位</li>
+<li>double 长度为64位</li>
+<li>默认情况下：定义小浮点型都是使用<strong>double</strong>类型</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">double</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> <span class="hljs-number">123.45</span>;<br>        <br><span class="hljs-comment">// 出现编译错误，因为54.321超过32位，需要转换为double</span><br><span class="hljs-type">float</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> <span class="hljs-number">54.321</span>;<br><br><span class="hljs-comment">// 往数值后面加f，声明为float</span><br><span class="hljs-type">float</span> <span class="hljs-variable">f2</span> <span class="hljs-operator">=</span> <span class="hljs-number">54.321f</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+
+<h4 id="字面值"><a href="#字面值" class="headerlink" title="字面值"></a>字面值</h4><p>给基本类型的变量赋值的方式叫做 <strong>字面值</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 例如</span><br><span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br><span class="hljs-type">float</span> <span class="hljs-variable">fl</span> <span class="hljs-operator">=</span> <span class="hljs-number">23.1</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 整形字面型</span><br><span class="hljs-type">long</span> <span class="hljs-variable">val</span> <span class="hljs-operator">=</span> <span class="hljs-number">26L</span>; <span class="hljs-comment">//以L结尾的字面值表示long型</span><br><span class="hljs-type">int</span> <span class="hljs-variable">decVal</span> <span class="hljs-operator">=</span> <span class="hljs-number">26</span>; <span class="hljs-comment">//默认就是int型</span><br><span class="hljs-type">int</span> <span class="hljs-variable">hexVal</span> <span class="hljs-operator">=</span> <span class="hljs-number">0x1a</span>; <span class="hljs-comment">//16进制</span><br><span class="hljs-type">int</span> <span class="hljs-variable">oxVal</span> <span class="hljs-operator">=</span> <span class="hljs-number">032</span>; <span class="hljs-comment">//8进制</span><br><span class="hljs-type">int</span> <span class="hljs-variable">binVal</span> <span class="hljs-operator">=</span> <span class="hljs-number">0b11010</span>; <span class="hljs-comment">//2进制</span><br><br><span class="hljs-comment">// 浮点数字面值顶折</span><br><span class="hljs-type">float</span> <span class="hljs-variable">f1</span> <span class="hljs-operator">=</span> <span class="hljs-number">123.4F</span>;<span class="hljs-comment">// 以F结尾的字面值表示float类型</span><br><span class="hljs-type">double</span> <span class="hljs-variable">d1</span> <span class="hljs-operator">=</span> <span class="hljs-number">123.4</span>;<span class="hljs-comment">// 默认就是double类型</span><br><span class="hljs-type">double</span> <span class="hljs-variable">d2</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.234e2</span>;<span class="hljs-comment">// 科学计数法表示double</span><br><br><span class="hljs-comment">// 字符型和转义</span><br><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;这是字符串&quot;</span><br><span class="hljs-type">char</span> <span class="hljs-variable">newLine</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;\n&#x27;</span>; <span class="hljs-comment">//换行</span><br><span class="hljs-type">char</span> <span class="hljs-variable">doubleQuote</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;\&quot;&#x27;</span>; <span class="hljs-comment">//双引号</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>易错点：</p>
+<p><strong>byte b &#x3D; 200</strong> 会报错</p>
+<p>解：byte一共八个bit位，最高位表示正负，所以范围是-128~127</p>
+</blockquote>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><p>不同类型之间的数据可以互相转换，</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/03/NCRE-python/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python-较为经典题目</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/02/26/java-spring1/">
+                        <span class="hidden-mobile">Java-Spring 学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

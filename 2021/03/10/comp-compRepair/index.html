@@ -1,0 +1,869 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="义务维修前言 硬件检测与基本的维修，主要是针对台式。若对方笔记本在保修期内，直接售后。 基础知识不涉及电焊、电路板排错，出现此问题建议客户直接更换部件，或另找维修 系统的安装，常见的软件安装问题，系统环境、驱动配置，以及系统的基本操作。 虚拟机安装系统，以及物理机安装系统 老主板安装系统   如果有空可以讲讲办公室经常出现的网络排错  学习预告 学习只顾及维修硬件部分知识，只要求掌握其基本的作用以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机日常维护与维修">
+<meta property="og:url" content="http://example.com/2021/03/10/comp-compRepair/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="义务维修前言 硬件检测与基本的维修，主要是针对台式。若对方笔记本在保修期内，直接售后。 基础知识不涉及电焊、电路板排错，出现此问题建议客户直接更换部件，或另找维修 系统的安装，常见的软件安装问题，系统环境、驱动配置，以及系统的基本操作。 虚拟机安装系统，以及物理机安装系统 老主板安装系统   如果有空可以讲讲办公室经常出现的网络排错  学习预告 学习只顾及维修硬件部分知识，只要求掌握其基本的作用以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310162138218.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310163309827.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310163357046.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310163420686.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310163507181.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310164009839.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310170314532.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210310170113821.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210312171724415.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210311090159809.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210311090809033.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210312111605897.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210312125909035.png">
+<meta property="og:image" content="http://example.com/comp-compRepair/image-20210312130104925.png">
+<meta property="article:published_time" content="2021-03-10T07:11:56.000Z">
+<meta property="article:modified_time" content="2021-03-28T10:23:13.431Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="计算机维护">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/comp-compRepair/image-20210310162138218.png">
+  
+  
+  <title>计算机日常维护与维修 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算机日常维护与维修">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-10 15:11" pubdate>
+        2021年3月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      51 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机日常维护与维修</h1>
+            
+            <div class="markdown-body">
+              <h1 id="义务维修"><a href="#义务维修" class="headerlink" title="义务维修"></a>义务维修</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>硬件检测与基本的维修，<strong>主要是针对台式</strong>。若对方笔记本在保修期内，直接售后。</li>
+<li>基础知识<strong>不涉及电焊、电路板排错</strong>，出现此问题建议客户直接更换部件，或另找维修</li>
+<li>系统的安装，常见的软件安装问题，系统环境、驱动配置，以及系统的基本操作。<ul>
+<li><u>虚拟机</u>安装系统，以及<u>物理机</u>安装系统</li>
+<li>老主板安装系统</li>
+</ul>
+</li>
+<li>如果有空可以讲讲办公室经常出现的<strong>网络排错</strong></li>
+</ul>
+<h3 id="学习预告"><a href="#学习预告" class="headerlink" title="学习预告"></a>学习预告</h3><ul>
+<li><p>学习<strong>只顾及维修硬件部分</strong>知识，只要求掌握其基本的作用以及容易出现问题的情况</p>
+</li>
+<li><p><strong>检查硬件错误</strong>：一般此类硬件错误可以不更换核心部件</p>
+</li>
+<li><p><strong>提出分析报告和维修建议</strong>：预计是哪里出现问题，将测试情况以及得出的结论，便于后续客户去买进设备和给下一个维护者便利</p>
+</li>
+<li><p><strong>安装系统</strong>有几种常见的方法：在不同的时候选择最适合的方法</p>
+</li>
+<li><p>系统分区建议</p>
+</li>
+<li><p>后续操作系统的一些常见问题：驱动安装，上不了网，基本信息排错</p>
+</li>
+<li><p>网络排错</p>
+<p>&#x3D;&#x3D;使用百度解决问题&#x3D;&#x3D;</p>
+</li>
+</ul>
+<h2 id="硬件部分"><a href="#硬件部分" class="headerlink" title="硬件部分"></a>硬件部分</h2><p>硬件维修的<code>目的</code>：<strong>进入BIOS系统</strong>，因为能进入BIOS后，剩下的都好排错和重装</p>
+<h3 id="常见的硬件基本功能-了解"><a href="#常见的硬件基本功能-了解" class="headerlink" title="常见的硬件基本功能(了解)"></a>常见的硬件基本功能(了解)</h3><ul>
+<li><code>CPU</code>：- 对数据进行运算处理</li>
+<li><code>主板</code>： - 连接各个硬件的平台，提供I&#x2F;O接口</li>
+<li><code>内存</code>： - 存放CPU运算数据及硬盘与外部数据交换</li>
+<li><code>硬盘</code>： - 提供数据存储</li>
+<li><code>显卡</code>： - 可选 ： 提供图形数据处理 &amp; 深度学习训练 &amp; 打游戏</li>
+<li><code>电源</code>： - 交流转直流为其他组件提供供电</li>
+<li><code>散热器</code>： - CPU GPU等高发热量器件提供散热</li>
+<li><code>外设</code> ： - 键盘鼠标，等外置设备</li>
+<li><code>显示屏</code> ： - 提供系统可视化界面</li>
+</ul>
+<p>在以上常见的设备中，容易出现故障的有前：CPU,主板，内存，硬盘</p>
+<hr>
+<h4 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h4><blockquote>
+<p>BIOS 它保存着系统CPU、软硬盘驱动器、显示器、键盘等部件的信息。 关机后，系统<strong>通过一块后备电池</strong>向CMOS供电以保持其中的信息</p>
+<ul>
+<li>BIOS：保存着日期信息，如果每次重启发现时间重置，可以更换电池</li>
+<li>开机时根<strong>据不同主板类型</strong>按快捷键进入，常见快捷键有<code>F2</code>，<code>F1</code>，<code>del</code>，<code>F12</code>，机型百度：<em>联想BIOS快捷键</em></li>
+<li>学习目标：能够进入BIOS进行配置，能够对常见BIOS问题进行解决</li>
+</ul>
+</blockquote>
+<ul>
+<li><p><code>BIOS</code>：（基本输入输出系统）的学习</p>
+<ul>
+<li>可以理解为最基础的配置驱动</li>
+<li>它保存着系统CPU、软硬盘驱动器、显示器、日期和时间的信息。 关机后，系统通过一块后备电池向CMOS供电以保持其中的信息</li>
+</ul>
+</li>
+<li><p>常见的配置:</p>
+<ul>
+<li>选择<code>硬盘启动项</code>：系统从哪个盘启动，进入PE的方法</li>
+<li>选择<code>显示输出方式</code>：从显卡输出还是集显、<code>放电</code>后解决显示器不输出（不带集显的除外）、</li>
+<li>选择<code>开启SATA硬盘AHCI模式</code>：部分老版笔记本进入PE后看不见硬盘，需要进入<code>Devices-&gt;ATA Drives Setup -&gt; SATA Mode</code> 设为<code>AHCI mode</code></li>
+<li>开启<code>英特尔虚拟化</code>：给同学装虚拟机遇到最多的</li>
+</ul>
+</li>
+<li><p><strong>重置BIOS</strong>：<code>F9，保存：</code>F10</p>
+<p><img src="/comp-compRepair/image-20210310162138218.png" srcset="/img/loading.gif" lazyload alt="进入pe读不到硬盘"></p>
+</li>
+</ul>
+<p><strong>显示输出方式</strong>（了解&#x2F;需要时百度）</p>
+<ul>
+<li><p>关键词：<code>Graphic Device</code>，<code>Graphic Adapter</code>。意思：<code>显示驱动</code>。</p>
+</li>
+<li><p>选项解释：</p>
+<ul>
+<li><code>on-board graphic</code>：启用禁用内置显卡（若CPU支持）</li>
+<li><code>IGD</code>：内置集成显卡</li>
+<li><code>PED</code>：PCIE显卡</li>
+<li><code>PCI/IGD</code>：优先PCI显卡，若无则用集成显卡</li>
+<li><code>PCI/PED</code>：优先PCI显卡，若无则用独立PCIE显卡</li>
+</ul>
+<p><img src="/comp-compRepair/image-20210310163309827.png" srcset="/img/loading.gif" lazyload alt="Graphic Device 类"></p>
+<p><img src="/comp-compRepair/image-20210310163357046.png" srcset="/img/loading.gif" lazyload alt="选项"></p>
+<p><img src="/comp-compRepair/image-20210310163420686.png" srcset="/img/loading.gif" lazyload alt="有开启或关闭集显的BIOS"></p>
+<p><img src="/comp-compRepair/image-20210310163507181.png" srcset="/img/loading.gif" lazyload alt="不同的模式"></p>
+</li>
+</ul>
+<h4 id="硬件安装-跳线"><a href="#硬件安装-跳线" class="headerlink" title="硬件安装-跳线"></a>硬件安装-跳线</h4><p>挖个坑。。以后遇到就填</p>
+<h4 id="显示器连接线"><a href="#显示器连接线" class="headerlink" title="显示器连接线"></a>显示器连接线</h4><blockquote>
+<p>学习目的：了解外形张啥样。（其他传输模式和速率有兴趣可以自行百度）</p>
+</blockquote>
+<ul>
+<li>显示器连接线常见为<code>3种</code>：<code>HDMI</code>、<code>VGA</code>、<code>DVI</code>线</li>
+</ul>
+<p><img src="/comp-compRepair/image-20210310164009839.png" srcset="/img/loading.gif" lazyload alt="图像"></p>
+<ul>
+<li>其他知识点：<ul>
+<li><code>HDMI</code>：适合影像传输的专用型数字化接口。<strong>能够传输视频和音频</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="英特尔虚拟化"><a href="#英特尔虚拟化" class="headerlink" title="英特尔虚拟化"></a>英特尔虚拟化</h4><blockquote>
+<p>学习目的：开不了虚拟机。。</p>
+</blockquote>
+<p>这里新版的BIOS容易出错，设置时，应该进入高级选项进行配置</p>
+<p>常见关键词：<code>虚拟化</code>、<code>VT</code>、<code>VT-x</code>、<code>VT-D</code>、<code>Inter(R) Virtualizantion Technology</code></p>
+<p>找不到就<em>百度</em>：<strong>xxx笔记本&#x2F;主板 开启虚拟化技术</strong></p>
+<p><img src="/comp-compRepair/image-20210310170314532.png" srcset="/img/loading.gif" lazyload alt="新版的BIOS"></p>
+<p><img src="/comp-compRepair/image-20210310170113821.png" srcset="/img/loading.gif" lazyload alt="常见的英特尔虚拟化技术开启"></p>
+<h3 id="排错的技巧"><a href="#排错的技巧" class="headerlink" title="排错的技巧"></a>排错的技巧</h3><blockquote>
+<ul>
+<li><p>排错：目的是为了<strong>找到出现问题的地方</strong></p>
+</li>
+<li><p>常见的问题有：<u>开不了机，开机后无限重启，开机后不显示</u></p>
+</li>
+<li><p>学习目标：逐步排错，<strong>找到出现问题的硬件</strong>和可能的问题，配合BIOS进行，什么是<code>放电</code></p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>介于本门课是<strong>实操大于理论</strong>，这里给大家过一遍解决问题的方法</li>
+<li>学习建议：讲过一边知道这项错误，<u>我脑子里有印象，讲过这个问题，这样就能快速定位问题</u></li>
+</ul>
+<p>接着，举例几个最常见的例子，还有排错流程，此流程可以解决绝大多数非硬件损坏问题</p>
+<h4 id="大概率出现的问题"><a href="#大概率出现的问题" class="headerlink" title="大概率出现的问题"></a>大概率出现的问题</h4><p>“开机后无限重启”，“开机后不显示屏幕”</p>
+<p><strong>排错方法</strong></p>
+<ul>
+<li><p>此类问题大部分情况是由于<strong>内存松动产生</strong>的</p>
+<ul>
+<li>拔下内存条，使用<strong>橡皮擦擦拭金手指</strong></li>
+<li>将内存条卡<strong>卡扣插入到位</strong></li>
+</ul>
+<p><img src="/comp-compRepair/image-20210312171724415.png" srcset="/img/loading.gif" lazyload alt="金手指位置"></p>
+</li>
+</ul>
+<p>重启计算机，若还是反复重启，则需要对主板进行<code>放电</code>操作</p>
+<ul>
+<li><p>一般硬件更新导致的系统无法开机，都使用对主板<code>放电</code>进行修复</p>
+<p><strong>注意：必须要在断电的情况下进行操作，断电是指拔掉电源线，不是把插排上的开关关了</strong></p>
+<ul>
+<li><p>找到主板上的<strong>电池</strong>，扣下（主板上的电池有啥用）</p>
+<ul>
+<li>情况一：主板上有<code>CMOS_REST</code> 的两个金属触（一般出现在主板拐角处，单独的两个触），不同主板叫法不一样，意思是是（<code>BIOS重置</code>），此时直接用导电螺丝刀触碰两个金属针脚进行<code>放电</code>。可能出现的关键词有：<code>RESET</code>（重置），<code>BIOS</code>，<code>CMOS</code>,<code>CLR</code><br> <img src="/comp-compRepair/image-20210311090159809.png" srcset="/img/loading.gif" lazyload alt="CLR_CMOS针脚，一般需要取下一个帽子"></li>
+</ul>
+<p> <img src="/comp-compRepair/image-20210311090809033.png" srcset="/img/loading.gif" lazyload alt="双金属针脚"></p>
+<ul>
+<li>情况二：没有找到金属针脚，使用螺丝刀等导电体<u>连接电池槽正负极</u>，进行放电<code>操作</code></li>
+<li>情况三：有一个塑料的跳线帽,取下后短接（螺丝刀触碰）放电</li>
+</ul>
+</li>
+<li><p>放电时：长按电源开关机键，一般重复2-3次</p>
+</li>
+<li><p>开启后若成功解决“无限重启”。将电池放入，完成硬件维修。</p>
+</li>
+<li><p><strong>再次开机</strong>，将会自动进入BIOS页面，查看右下角，选择使用默认配置<code>F9</code>：<code>default setting</code>，再<code>F10</code>： <code>保存并重启</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>衍生问题</strong></p>
+<p>经过<code>放电</code>操作后可以开机，但不显示屏幕</p>
+<ul>
+<li>此类问题可能是显卡在BIOS配置不正确导致的<ul>
+<li>检测方法：使用<strong>键盘</strong>插到主板后侧USB插口，开机瞬间是否三盏灯亮起，若亮起则定位为此问题</li>
+<li>更换<code>显示器口</code>的位置，从<code>显卡插口处</code>弄到<code>主板插口处</code></li>
+</ul>
+</li>
+<li>若能成功进入系统则确定位置为显卡问题<ul>
+<li>出现该问题也不需要慌，一般显卡拆下来放一会，再将<code>BIOS</code>内<code>输出方式</code>调回显卡即可</li>
+</ul>
+</li>
+</ul>
+<p><strong>其他排错法</strong></p>
+<ul>
+<li>排列组合排错：两条内存。一条条插在不同插槽、或其他能用的电脑。<ul>
+<li>目的：排除插槽、内存条问题</li>
+</ul>
+</li>
+<li>排除法：只有<code>内存</code>和<code>CPU</code>，再接<code>显示器</code>、<code>键盘</code>。就可以显示BIOS页面，<strong>不需要硬盘、显卡等！</strong><ul>
+<li>目的：排除硬盘、显卡故障，再通过BIOS进行检查</li>
+</ul>
+</li>
+<li>组合法：键盘可以查看<strong>硬盘&#x2F;系统 是否被正常启动</strong>，启动时表现为：<u>三个灯瞬间亮起后灭掉，再亮起第一盏灯</u><ul>
+<li>目的：通过这个可以排除硬盘问题，进一步从硬盘排错到显卡排错</li>
+</ul>
+</li>
+</ul>
+<h3 id="软件部分"><a href="#软件部分" class="headerlink" title="软件部分"></a>软件部分</h3><blockquote>
+<p>当硬件运行正常，能够进入<code>BIOS</code>，接着就能对系统进行重装、重置等操作</p>
+<ul>
+<li>学习目标：重装系统后的一些基本问题</li>
+</ul>
+</blockquote>
+<p>常见<strong>装机后</strong>问题：</p>
+<ul>
+<li><p>无法连接网络</p>
+<ul>
+<li>选择 <code>网络驱动版</code> 安装，或使用工具<code>sdi-tool</code>安装插件</li>
+</ul>
+</li>
+<li><p>缺少 <code>xxx.dll</code> 缺少 <code>msvcxxx.dll</code></p>
+<ul>
+<li>安装 <code>微软运行库合集</code></li>
+</ul>
+</li>
+<li><p>基本的配置：如用户更改密码、密码策略设置、IP设置、桌面设置、防火墙设置</p>
+</li>
+<li><p>安装软件时注意点</p>
+</li>
+<li><p>F8 最近一次配置&#x2F; 安全模式：能够解决大部分<strong>win7驱动问题</strong></p>
+<ul>
+<li>F8 -&gt; “最近的一次<strong>配置正确</strong>启动”</li>
+<li><code>msconfig</code> 选择性启动</li>
+</ul>
+</li>
+<li><p>操作之前，要进行<strong>还原点设置</strong></p>
+</li>
+</ul>
+<h2 id="装机部分"><a href="#装机部分" class="headerlink" title="装机部分"></a>装机部分</h2><blockquote>
+<p>学习目标：</p>
+<ul>
+<li>选择合适的PE系统，这里推荐 WEPE</li>
+<li>分区部分知识点<ul>
+<li><strong>PE</strong> 对硬盘进行分区</li>
+<li><strong>PE</strong> 对硬盘迁移</li>
+<li><strong>PE</strong> 对硬盘转换z格式</li>
+<li>系统自带<strong>磁盘管理器</strong>使用</li>
+</ul>
+</li>
+<li>DISKPART 格式化硬盘</li>
+</ul>
+</blockquote>
+<p><strong>软碟通烧录安装</strong></p>
+<p><strong>重装纯净系统</strong>：</p>
+<ol>
+<li>准备镜像：<a target="_blank" rel="noopener" href="https://msdn.itellyou.cn/">msdn网址</a>，通过镜像下载</li>
+<li>通过PE挂载镜像安装</li>
+<li>使用分区软件进行分区</li>
+<li>安装系统</li>
+<li>（可能遇到硬盘格式不对问题）</li>
+<li>安装驱动</li>
+</ol>
+<p><strong>懒人安装系统</strong>：(快速安装推荐&#x2F;一般电脑城就是这个)</p>
+<ol>
+<li>准备懒人镜像</li>
+<li>剩余步骤与之前一样</li>
+</ol>
+<p><strong>Ghost安装</strong>：选择<code>gho安装器</code>或<code>xxx硬盘安装器</code></p>
+<p><strong>WIM安装</strong>：使用PE内的一键安装</p>
+<p><strong>驱动安装方法1</strong></p>
+<ol>
+<li>可以使用<code>USB共享网络</code> + <code>360驱动大师</code>（绿色版）    <ul>
+<li>USB共享网络需要使用数据线和手机，插入电脑后是否有”仅充电”、”传输文件”、”USB调试”等</li>
+<li>如果手机连接了WIFI就无需消耗流量</li>
+</ul>
+</li>
+<li>优先在 <code>驱动大师 -&gt; 驱动检测</code> 中安装 <code>网卡驱动</code></li>
+</ol>
+<p><strong>驱动安装方法2</strong></p>
+<ol>
+<li>使用<code>SDI_TOOLS</code> 安装基础驱动</li>
+<li>在<code>计算机管理</code> -&gt; <code>设备管理器</code> 中更新驱动设备</li>
+</ol>
+<h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><p><strong>桌面消失</strong>，半天都是黑的<code>ctrl + shift + esc</code>启动后，重启资源管理器</p>
+<ul>
+<li>USB共享网络：百度搜索：<em>USB 共享网络</em></li>
+</ul>
+<p>机械分区（C盘）<strong>迁移</strong>到固态（C盘）：</p>
+<ol>
+<li>备份：（不删除原来的机械硬盘分区）</li>
+<li>分区助手：迁移OS到SSD&#x2F;HDD ，不要用分区克隆</li>
+</ol>
+<p><strong>硬盘格式问题</strong></p>
+<p>WIN7 装WIN10 ，PE 装：<code>diskpart</code> 问题：<strong>windows 10 无法安装 GPT 格式 不支持</strong></p>
+<p>（转换时可能出现要强制擦除，再进行百度）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs powershell">list disk <span class="hljs-comment"># 查看硬盘</span><br><span class="hljs-built_in">select</span> disk <span class="hljs-number">1</span> <span class="hljs-comment"># 选择第一块硬盘</span><br>clean <span class="hljs-comment"># 擦除所有分区</span><br>conver gpt <span class="hljs-comment"># 将当前硬盘转换为gpt</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="PE-装软件"><a href="#PE-装软件" class="headerlink" title="PE 装软件"></a>PE 装软件</h3><p>搜：单文件版</p>
+<h3 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h3><ul>
+<li>HBIT卸载（单文件版）:运行即可使用</li>
+<li>数字激活工具：win10 激活(数字永久激活)<ul>
+<li><code>cmd</code> 输入<code>slmgr.vbs -xpr</code>：查看是否永久激活</li>
+</ul>
+</li>
+<li>暴风激活工具：win10以及之前版本KMS激活（非永久，一般180天）</li>
+<li>驱动大师（绿色版）：无捆绑安装，直接安装驱动，需要网络</li>
+</ul>
+<p><strong>office脚本激活</strong></p>
+<ul>
+<li>保存为bat脚本</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs powershell">@<span class="hljs-built_in">echo</span> off<br>(<span class="hljs-built_in">cd</span> /d <span class="hljs-string">&quot;%~dp0&quot;</span>)&amp;&amp;(NET FILE||(powershell <span class="hljs-built_in">start-process</span> <span class="hljs-literal">-FilePath</span> <span class="hljs-string">&#x27;%0&#x27;</span> <span class="hljs-literal">-verb</span> runas)&amp;&amp;(<span class="hljs-keyword">exit</span> /B)) &gt;NUL <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span><br>title Office <span class="hljs-number">2019</span> Activator <span class="hljs-built_in">r</span>/Piracy<br><span class="hljs-built_in">echo</span> Converting... &amp; mode <span class="hljs-number">40</span>,<span class="hljs-number">25</span><br>(<span class="hljs-keyword">if</span> exist <span class="hljs-string">&quot;%ProgramFiles%\Microsoft Office\Office16\ospp.vbs&quot;</span> <span class="hljs-built_in">cd</span> /d <span class="hljs-string">&quot;%ProgramFiles%\Microsoft Office\Office16&quot;</span>)&amp;(<span class="hljs-keyword">if</span> exist <span class="hljs-string">&quot;%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs&quot;</span> <span class="hljs-built_in">cd</span> /d <span class="hljs-string">&quot;%ProgramFiles(x86)%\Microsoft Office\Office16&quot;</span>)&amp;(<span class="hljs-keyword">for</span> /f %%x <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms&#x27;</span>) <span class="hljs-keyword">do</span> cscript ospp.vbs /inslic:<span class="hljs-string">&quot;..\root\Licenses16\%%x&quot;</span> &gt;nul)&amp;(<span class="hljs-keyword">for</span> /f %%x <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms&#x27;</span>) <span class="hljs-keyword">do</span> cscript ospp.vbs /inslic:<span class="hljs-string">&quot;..\root\Licenses16\%%x&quot;</span> &gt;nul)<br>cscript //nologo ospp.vbs /unpkey:<span class="hljs-number">6</span>MWKP &gt;nul&amp;cscript //nologo ospp.vbs /inpkey:NMMKJ<span class="hljs-literal">-6RK4F-KMJVX-8D9MJ-6MWKP</span> &gt;nul&amp;<span class="hljs-built_in">set</span> i=<span class="hljs-number">1</span><br>:server<br><span class="hljs-keyword">if</span> %i%==<span class="hljs-number">1</span> <span class="hljs-built_in">set</span> KMS_Sev=kms7.MSGuides.com<br><span class="hljs-keyword">if</span> %i%==<span class="hljs-number">2</span> <span class="hljs-built_in">set</span> KMS_Sev=kms8.MSGuides.com<br><span class="hljs-keyword">if</span> %i%==<span class="hljs-number">3</span> <span class="hljs-built_in">set</span> KMS_Sev=kms9.MSGuides.com<br>cscript //nologo ospp.vbs /sethst:%KMS_Sev% &gt;nul<br><span class="hljs-built_in">echo</span> %KMS_Sev% &amp; <span class="hljs-built_in">echo</span> Activating...<br>cscript //nologo ospp.vbs /act | find /i <span class="hljs-string">&quot;successful&quot;</span> &amp;&amp; (<span class="hljs-built_in">echo</span> Complete) || (<span class="hljs-built_in">echo</span> Trying another KMS Server &amp; <span class="hljs-built_in">set</span> /a i+=<span class="hljs-number">1</span> &amp; goto server)<br>pause &gt;nul<br><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="网络排错"><a href="#网络排错" class="headerlink" title="网络排错"></a>网络排错</h2><blockquote>
+<p>学习目标：</p>
+<ul>
+<li>了解常见的网络错误</li>
+<li>网络出现的问题</li>
+<li>网络排错方法</li>
+<li>防火墙开关和造成的影响</li>
+<li>简单的局域网排错</li>
+</ul>
+</blockquote>
+<h3 id="网络名词（知识点）"><a href="#网络名词（知识点）" class="headerlink" title="网络名词（知识点）"></a>网络名词（知识点）</h3><ul>
+<li><code>IP</code> 最常见的地址<ul>
+<li>局域网知识：<code>内网IP</code>与<code>子网掩码</code></li>
+<li>学习目标：如何<strong>设置IP</strong>，什么是<strong>自动分配</strong>，常见的排错命令</li>
+</ul>
+</li>
+<li><code>网关</code> 所有数据都需要经过它<ul>
+<li>一般是<code>路由器地址</code></li>
+<li>学习目标：如何找到网关</li>
+</ul>
+</li>
+<li><code>DNS</code> 配置：解析域名，上不了网的一种情况<ul>
+<li>测试：<code>ping www.baidu.com</code></li>
+</ul>
+</li>
+<li><code>DHCP</code> ：分配IP地址</li>
+<li><code>防火墙</code>与<code>网络发现</code>：防火墙配置不当或不配置会导致很多服务不能用，导致排错时出现误判</li>
+</ul>
+<h3 id="内网地址"><a href="#内网地址" class="headerlink" title="内网地址"></a>内网地址</h3><ul>
+<li><p>常见的地址<code>192.168.1.1</code>,<code>192.168.3.1</code>（应用于简单的局域网）</p>
+<ul>
+<li>一般网关地址结尾是 1 或 254 如当前设备的IP为<code>192.168.1.5</code> ，可能的网关为<code>192.168.1.1</code> 或 <code>192.168.1.254</code></li>
+</ul>
+</li>
+<li><p>通过<code>ipconfig</code> 查看IP，通过<code>ping</code>检测连通性，关闭<code>防火墙</code></p>
+</li>
+<li><p>实验:找到自己的内网IP，找到自己网关地址，登陆网关页面</p>
+<ul>
+<li>安全问题：常见问题，用户：admin 密码123456、654321</li>
+</ul>
+</li>
+</ul>
+<h3 id="物理设备"><a href="#物理设备" class="headerlink" title="物理设备"></a>物理设备</h3><ul>
+<li>无线路由器：分为<code>WAN口</code>和<code>LAN口</code><ul>
+<li><code>WAN</code> 蓝色 接<code>调制解调器</code>（猫，Modem）</li>
+<li><code>LAN</code> 黄色 接<code>设备</code>的</li>
+<li>（现在高端设备每个口都可以支持<code>WAN</code>和<code>LAN</code>，还支持自动识别）</li>
+</ul>
+</li>
+<li>无线路由器重置：用针长按路由器<code>REST</code>口几秒后路由器灯闪烁<ul>
+<li>查看背板的WIFI名和默认密码，通过浏览器访问路由器（网关）IP</li>
+</ul>
+</li>
+</ul>
+<p><img src="/comp-compRepair/image-20210312111605897.png" srcset="/img/loading.gif" lazyload alt="WAN 口 与LAN口"></p>
+<p><strong>情景展示</strong></p>
+<blockquote>
+<p>学习前提：知道什么是DHCP</p>
+<p>DHCP：IP地址动态分配，指不需要手动配置 IP 的情况下能够自动获取到 IP 地址</p>
+</blockquote>
+<p>在家庭网络中：</p>
+<ul>
+<li>一般需要使用<code>WAN口</code>接<code>猫</code>，然后使用拨号账号进行上网</li>
+<li>或者接入<code>WAN口</code>使用<code>DHCP</code>(自动分配地址)进行分配</li>
+</ul>
+<p>在办公室网络中：(需要了解原理)</p>
+<ul>
+<li>外部网络接入<code>LAN口</code>后对网络进行<code>桥接</code></li>
+<li>外部网络接入<code>WAN口</code>后再对<code>内网</code>进行分配</li>
+<li>外部网络接入<code>WAN口</code>配置<code>WAN口</code>的IP，然后对内网进行分配</li>
+<li>（理解为我们中继，画图理解，不理解这里后面很难排错）</li>
+</ul>
+<p><img src="/comp-compRepair/image-20210312125909035.png" srcset="/img/loading.gif" lazyload alt="WAN口配置-动态ip"></p>
+<p><img src="/comp-compRepair/image-20210312130104925.png" srcset="/img/loading.gif" lazyload alt="HHCP"></p>
+<blockquote>
+<p>学习目标：</p>
+<ul>
+<li>了解办公室家庭的<code>拓扑结构</code></li>
+<li>了解路由器的两个接口作用</li>
+</ul>
+</blockquote>
+<h3 id="排错实例过程"><a href="#排错实例过程" class="headerlink" title="排错实例过程"></a>排错实例过程</h3><blockquote>
+<p>注意：这里只讲一个基础的过程，现实排错中应该需要组合下述方法</p>
+</blockquote>
+<p><strong>故障排除</strong></p>
+<ul>
+<li>确定网线是否可用：<ul>
+<li>使用<strong>路由器</strong>排错：直接将网线两端插入路由器背板，查看两个端口，灯是否亮起</li>
+<li>操作时可以拔掉其他的的网线避免短暂的<code>广播风暴</code></li>
+</ul>
+</li>
+<li>连通性检查：<ul>
+<li>通过<code>ping</code>命令检测连通性</li>
+<li>检测自身和<code>网关</code>的连通性</li>
+<li>检测自身和<code>局域网设备</code>的连通性</li>
+<li>易错点：开了防火墙<code>防火墙</code>，和关闭了网络发现</li>
+</ul>
+</li>
+</ul>
+<p>路由器问题：</p>
+<ul>
+<li>路由器是否能分到地址，配置是否错误</li>
+<li>通过电脑直接连接<code>入户网线</code>，来排除是路由器问题还是入户口问题</li>
+</ul>
+<p><code>DNS</code>问题：</p>
+<ul>
+<li>能<code>ping</code>通<code>网关</code>和外网网址</li>
+<li>无法<code>ping</code>通<code>域名</code></li>
+</ul>
+<p><strong>故障修复</strong></p>
+<ul>
+<li>重置路由器，重新给他们配置</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%B4%E6%8A%A4/">计算机维护</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/15/HCIE-one/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HCIE-虚拟化中重要的概念</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/07/java-annotationAreflect/">
+                        <span class="hidden-mobile">Java-注解与反射</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

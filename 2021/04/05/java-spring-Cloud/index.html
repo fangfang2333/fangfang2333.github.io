@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="java-spring-Cloud 集成了服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件 SpringCloud屏蔽掉了复杂的配置和实现原理，最终给开发者流出了一套简单易懂，易于部署和维护的分布式系统开发工具包  SpringBoot 和SpringCloud关系 专注于快速开发 集成了服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件 SpringCl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-spring-Cloud">
+<meta property="og:url" content="http://example.com/2021/04/05/java-spring-Cloud/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="java-spring-Cloud 集成了服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件 SpringCloud屏蔽掉了复杂的配置和实现原理，最终给开发者流出了一套简单易懂，易于部署和维护的分布式系统开发工具包  SpringBoot 和SpringCloud关系 专注于快速开发 集成了服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件 SpringCl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/java-spring-Cloud/image-20210407200218415.png">
+<meta property="og:image" content="http://example.com/java-spring-Cloud/image-20210407201157097.png">
+<meta property="og:image" content="http://example.com/java-spring-Cloud/image-20210409184543451.png">
+<meta property="article:published_time" content="2021-04-05T09:30:30.000Z">
+<meta property="article:modified_time" content="2021-04-12T13:40:30.255Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/java-spring-Cloud/image-20210407200218415.png">
+  
+  
+  <title>java-spring-Cloud - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="java-spring-Cloud">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-05 17:30" pubdate>
+        2021年4月5日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      21k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      176 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">java-spring-Cloud</h1>
+            
+            <div class="markdown-body">
+              <h2 id="java-spring-Cloud"><a href="#java-spring-Cloud" class="headerlink" title="java-spring-Cloud"></a>java-spring-Cloud</h2><ul>
+<li>集成了服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件</li>
+<li>SpringCloud屏蔽掉了复杂的配置和实现原理，最终给开发者流出了一套简单易懂，易于部署和维护的分布式系统开发工具包</li>
+</ul>
+<h3 id="SpringBoot-和SpringCloud关系"><a href="#SpringBoot-和SpringCloud关系" class="headerlink" title="SpringBoot 和SpringCloud关系"></a>SpringBoot 和SpringCloud关系</h3><ul>
+<li>专注于快速开发</li>
+<li>集成了服务注册与发现，配置中心，全链路监控，服务网关，负载均衡，熔断器等组件</li>
+<li>SpringCloud离不开SpringBoot </li>
+<li>SpringBoot专注于快速、方便的开发当个个体微服务，springcloud关注全局的服务制里框架</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://springcloud.cc/spring-cloud-netflix.html">https://springcloud.cc/spring-cloud-netflix.html</a></p>
+<p>中文api：<a target="_blank" rel="noopener" href="https://springcloud.cc/spring-cloud-dalston.html">https://springcloud.cc/spring-cloud-dalston.html</a></p>
+<p>springcloud中国社区：<a target="_blank" rel="noopener" href="http://springcloud.cn/">http://springcloud.cn</a></p>
+<p>SpringCloud 中文网： <a target="_blank" rel="noopener" href="https://springcloud.cc/">https://springcloud.cc</a></p>
+</blockquote>
+<h2 id="版本对应关系"><a href="#版本对应关系" class="headerlink" title="版本对应关系"></a>版本对应关系</h2><table>
+<thead>
+<tr>
+<th>Spring Cloud</th>
+<th><strong>Spring Boot</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Angel版本</td>
+<td>兼容Spring Boot 1.2.x</td>
+</tr>
+<tr>
+<td>Brixton版本</td>
+<td>兼容Spring Boot 1.3.x，也兼容Spring Boot 1.4.x</td>
+</tr>
+<tr>
+<td>Camden版本</td>
+<td>兼容Spring Boot 1.4.x，也兼容Spring Boot 1.5.x</td>
+</tr>
+<tr>
+<td>Dalston版本、Edgware版本</td>
+<td>兼容Spring Boot 1.5.x，不兼容Spring Boot 2.0.x</td>
+</tr>
+<tr>
+<td>Finchley版本</td>
+<td>兼容Spring Boot 2.0.x，不兼容Spring Boot 1.5.x</td>
+</tr>
+<tr>
+<td>Greenwich版本</td>
+<td>兼容Spring Boot 2.1.x</td>
+</tr>
+<tr>
+<td>Hoxtonl版本</td>
+<td>兼容Spring Boot 2.2.x</td>
+</tr>
+</tbody></table>
+<h3 id="更详细"><a href="#更详细" class="headerlink" title="更详细"></a>更详细</h3><table>
+<thead>
+<tr>
+<th><strong>Spring Boot</strong></th>
+<th>Spring Cloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.5.2.RELEASE</td>
+<td>Dalston.RC1</td>
+</tr>
+<tr>
+<td>1.5.9.RELEASE</td>
+<td>Edgware.RELEASE</td>
+</tr>
+<tr>
+<td>2.0.2.RELEASE</td>
+<td>Finchley.BUILD-SNAPSHOT</td>
+</tr>
+<tr>
+<td>2.0.3.RELEASE</td>
+<td>Finchley.RELEASE</td>
+</tr>
+<tr>
+<td>2.1.0.RELEASE-2.1.14.RELEASE</td>
+<td>Greenwich.SR5</td>
+</tr>
+<tr>
+<td>2.2.0.M4</td>
+<td>Hoxton.SR4</td>
+</tr>
+</tbody></table>
+<h2 id="项目-Hello-springcloud"><a href="#项目-Hello-springcloud" class="headerlink" title="项目 Hello springcloud"></a>项目 Hello springcloud</h2><ul>
+<li>了解下微服务的基本配置</li>
+<li>这里搭建两个类，分别对应 不同模块</li>
+</ul>
+<h3 id="依赖关系处理"><a href="#依赖关系处理" class="headerlink" title="依赖关系处理"></a>依赖关系处理</h3><blockquote>
+<p>核心：<a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies">https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies</a></p>
+</blockquote>
+<ol>
+<li>创建普通的<code>maven</code>项目，删除<code>src</code>目录</li>
+<li>导入依赖，注意<code>&lt;scope&gt;import&lt;/scope&gt;</code></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></div></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><br>	<span class="hljs-comment">&lt;!--版本控制--&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">junit.version</span>&gt;</span>4.13.2<span class="hljs-tag">&lt;/<span class="hljs-name">junit.version</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">lombok.version</span>&gt;</span>1.18.20<span class="hljs-tag">&lt;/<span class="hljs-name">lombok.version</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br><br>	<span class="hljs-comment">&lt;!--打包方式--&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span><br><br>	<span class="hljs-comment">&lt;!-- 多服务依赖管理（这是父级） --&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">dependencyManagement</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>			<span class="hljs-comment">&lt;!--springCloud 依赖--&gt;</span><br>			<span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies --&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2020.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-comment">&lt;!--SpringBoot 依赖--&gt;</span><br>			<span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies --&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-comment">&lt;!--数据库--&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.47<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-comment">&lt;!--数据源--&gt;</span><br>			<span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>druid<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.5<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-comment">&lt;!--SpringBoot 启动器--&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.1.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-comment">&lt;!-- 日志相关 --&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>ch.qos.logback<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>logback-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.3<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-comment">&lt;!--log4j--&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.9<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-comment">&lt;!-- 版本不写死。留空 --&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;junit.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;lombok.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">dependencyManagement</span>&gt;</span><br>	<span class="hljs-comment">&lt;!--打包插件--&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>src/main/resources<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span><br>					<span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/*.properties<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>					<span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/*.xml<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>				<span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">filtering</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">filtering</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span><br><br>			<span class="hljs-tag">&lt;<span class="hljs-name">resource</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">directory</span>&gt;</span>src/main/java<span class="hljs-tag">&lt;/<span class="hljs-name">directory</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">includes</span>&gt;</span><br>					<span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/*.properties<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>					<span class="hljs-tag">&lt;<span class="hljs-name">include</span>&gt;</span>**/*.xml<span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span><br>				<span class="hljs-tag">&lt;/<span class="hljs-name">includes</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">filtering</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">filtering</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">resource</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="创建初始数据库"><a href="#创建初始数据库" class="headerlink" title="创建初始数据库"></a>创建初始数据库</h3><ul>
+<li><code>db_source</code>：记录数据源的位置，后续用于分布式数据库读取</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> dept<br>(<br>    deptno    <span class="hljs-type">bigint</span> auto_increment<br>        <span class="hljs-keyword">primary</span> key,<br>    dname     <span class="hljs-type">varchar</span>(<span class="hljs-number">60</span>) <span class="hljs-keyword">null</span>,<br>    db_source <span class="hljs-type">varchar</span>(<span class="hljs-number">60</span>) <span class="hljs-keyword">null</span><br>)<br>    comment <span class="hljs-string">&#x27;部门表&#x27;</span>;<br>    <br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> db01.dept (dname, db_source) <span class="hljs-keyword">values</span> (&quot;开发部&quot;,&quot;db01&quot;);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> db01.dept (dname, db_source) <span class="hljs-keyword">values</span> (&quot;人事部&quot;,&quot;db01&quot;);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> db01.dept (dname, db_source) <span class="hljs-keyword">values</span> (&quot;财务部&quot;,&quot;db01&quot;);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> db01.dept (dname, db_source) <span class="hljs-keyword">values</span> (&quot;市场部&quot;,&quot;db01&quot;);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> db01.dept (dname, db_source) <span class="hljs-keyword">values</span> (&quot;运维部&quot;,&quot;db01&quot;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="实体类编写-模块1"><a href="#实体类编写-模块1" class="headerlink" title="实体类编写(模块1)"></a>实体类编写(模块1)</h3><h4 id="1、依赖"><a href="#1、依赖" class="headerlink" title="1、依赖"></a>1、依赖</h4><ul>
+<li>在<code>springcloudapi-&gt;pom.xml</code></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spingcloud-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>	<span class="hljs-comment">&lt;!-- 自己需要使用到的包 --&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、实体类"><a href="#2、实体类" class="headerlink" title="2、实体类"></a>2、实体类</h4><ul>
+<li>在<code>springcloudapi-&gt;com.hui.springcloud.pojo</code></li>
+<li><code>Serializable</code> 实现改类实现通信</li>
+<li><code>@Accessors(chain = true)</code>：开启链式写法<ul>
+<li><code>Dept dept = new Dept();</code></li>
+<li>允许这么写<code>dept.setxxx(1).setxxx(2).setxxx(3)</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.hui.pojo;<br>...<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> Hui3c</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: springcloud</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 数据库实体类</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2021-04-06 14:06:14</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">// 实现序列化</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@NoArgsConstructor</span><br><span class="hljs-meta">@Accessors(chain = true)</span>  <span class="hljs-comment">// 链式写法</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Dept</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>    <span class="hljs-keyword">private</span> Long deptno;<br>    <span class="hljs-keyword">private</span> String dname;<br><br>    <span class="hljs-comment">// 记录数据源的位置，后续用于分布式数据库读取</span><br>    <span class="hljs-comment">// 同一个数据可能来自不同的数据库</span><br>    <span class="hljs-keyword">private</span> String db_source;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Dept</span><span class="hljs-params">(String dname)</span> &#123;<br>        <span class="hljs-built_in">this</span>.dname = dname;<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="服务提供者-模块2"><a href="#服务提供者-模块2" class="headerlink" title="服务提供者(模块2)"></a>服务提供者(模块2)</h3><ul>
+<li>创建<code>springcloud-provider-dept-8001</code><ul>
+<li>通常把端口写在最后面</li>
+</ul>
+</li>
+</ul>
+<h4 id="1、依赖-1"><a href="#1、依赖-1" class="headerlink" title="1、依赖"></a>1、依赖</h4><ul>
+<li>依赖会继承父类的版本</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud-provider-dept-8001<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>druid<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>ch.qos.logback<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>logback-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-comment">&lt;!--springboot test--&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-comment">&lt;!--jetty--&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-jetty<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-comment">&lt;!--热部署--&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-devtools<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、该模块的配置"><a href="#2、该模块的配置" class="headerlink" title="2、该模块的配置"></a>2、该模块的配置</h4><p><strong>application.yml</strong></p>
+<ul>
+<li>配置别名</li>
+<li><code>resources-&gt;application.yml</code></li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8001</span><br><br><span class="hljs-attr">mybatis:</span><br>  <span class="hljs-attr">type-aliases-package:</span> <span class="hljs-string">com.hui.pojo</span><br>  <span class="hljs-comment"># mybatis 的核心配置</span><br>  <span class="hljs-attr">config-location:</span> <span class="hljs-string">classpath:mybatis/mybatis-config.xml</span><br>  <span class="hljs-comment"># mapper 文件</span><br>  <span class="hljs-attr">mapper-locations:</span> <span class="hljs-string">classpath:mybatis/mapper/*.xml</span><br><br><span class="hljs-comment"># spring 配置</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">springcloud-provider-dept</span><br>  <span class="hljs-comment"># 数据源配置</span><br>  <span class="hljs-attr">datasource:</span><br>    <span class="hljs-attr">type:</span> <span class="hljs-string">com.alibaba.druid.pool.DruidDataSource</span><br>    <span class="hljs-attr">driver-class-name:</span> <span class="hljs-string">com.mysql.jdbc.Driver</span><br>    <span class="hljs-attr">url:</span> <span class="hljs-string">jdbc:mysql://127.0.0.1:3306/db01?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true</span><br>    <span class="hljs-attr">username:</span> <span class="hljs-string">root</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>mybatis 配置</strong></p>
+<ul>
+<li>mybatis核心配置一般放于：<code>resources-&gt;mybatis.mybatis-config.xml</code></li>
+<li>这个文件不是必要的</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">configuration</span></span><br><span class="hljs-meta">  <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span><br><span class="hljs-meta">  <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 核心配置文件 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">settings</span>&gt;</span><br>		<span class="hljs-comment">&lt;!-- 开启二级缓存 --&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">setting</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;cacheEnabled&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">settings</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3、接口层"><a href="#3、接口层" class="headerlink" title="3、接口层"></a>3、接口层</h4><ul>
+<li><code>com.hui.springcloud.dao.DeptDao</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Mapper</span><br><span class="hljs-meta">@Repository</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DeptDao</span> &#123;<br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">addDept</span><span class="hljs-params">(Dept dept)</span>;<br>    Dept <span class="hljs-title function_">queryById</span><span class="hljs-params">(Long id)</span>;<br>    List&lt;Dept&gt; <span class="hljs-title function_">queryAll</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>编写Mapper文件</strong></p>
+<ul>
+<li><code>resources-&gt;mybatis.mapper.DeptMapper.xml</code></li>
+<li>注意要绑定命名空间</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">mapper</span></span><br><span class="hljs-meta">  <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span><br><span class="hljs-meta">  <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 核心配置文件 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.hui.springcloud.dao.DeptDao&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;addDept&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;Dept&quot;</span>&gt;</span><br>		insert into db01.dept (dname, db_source)<br>		VALUES (#&#123;dname&#125;, DATABASE())<br>	<span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;queryById&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;Dept&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;Long&quot;</span>&gt;</span><br>		select * from db01.dept where deptno = #&#123;deptno&#125;<br>	<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;queryAll&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;Dept&quot;</span>&gt;</span><br>		select * from db01.dept<br>	<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="4、service层"><a href="#4、service层" class="headerlink" title="4、service层"></a>4、service层</h4><p><strong>service 接口</strong></p>
+<ul>
+<li><code>com.hui.springcloud.service.DeptService</code></li>
+<li>与dao层一致</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">DeptService</span> &#123;<br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">addDept</span><span class="hljs-params">(Dept dept)</span>;<br>    Dept <span class="hljs-title function_">queryById</span><span class="hljs-params">(Long id)</span>;<br>    List&lt;Dept&gt; <span class="hljs-title function_">queryAll</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>接口实现类</strong></p>
+<ul>
+<li><code>com.hui.springcloud.service.DeptServiceImpl </code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeptServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">DeptService</span>&#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> DeptDao deptDao;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">addDept</span><span class="hljs-params">(Dept dept)</span> &#123;<br>        <span class="hljs-keyword">return</span> deptDao.addDept(dept);<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Dept <span class="hljs-title function_">queryById</span><span class="hljs-params">(Long id)</span> &#123;<br>        <span class="hljs-keyword">return</span> deptDao.queryById(id);<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> List&lt;Dept&gt; <span class="hljs-title function_">queryAll</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> deptDao.queryAll();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、Restful-服务控制器"><a href="#5、Restful-服务控制器" class="headerlink" title="5、Restful 服务控制器"></a>5、Restful 服务控制器</h4><ul>
+<li><code>com.hui.springcloud.controller.DeptController</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeptController</span> &#123;<br>    <span class="hljs-comment">// controller 层调用 service 层</span><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> DeptService deptService;<br>    <span class="hljs-comment">// 添加部门</span><br>    <span class="hljs-meta">@PostMapping(&quot;/dept/add&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">addDept</span><span class="hljs-params">(Dept dept)</span> &#123;<br>        <span class="hljs-keyword">return</span> deptService.addDept(dept);<br>    &#125;<br>    <span class="hljs-comment">// 通过id查询部门</span><br>    <span class="hljs-meta">@GetMapping(&quot;/dept/get/&#123;id&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> Dept <span class="hljs-title function_">get</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span> &#123;<br>        <span class="hljs-keyword">return</span> (Dept) deptService.queryById(id);<br>    &#125;<br>    <span class="hljs-comment">// 查询所有</span><br>    <span class="hljs-meta">@GetMapping(&quot;/dept/list&quot;)</span><br>    <span class="hljs-keyword">public</span> List&lt;Dept&gt; <span class="hljs-title function_">queryAll</span><span class="hljs-params">(Dept dept)</span> &#123;<br>        <span class="hljs-keyword">return</span> deptService.queryAll();<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="6、主启动类"><a href="#6、主启动类" class="headerlink" title="6、主启动类"></a>6、主启动类</h4><ul>
+<li><code>com.hui.springcloud.DeptProvider_8001</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeptProvider_8001</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 运行该类，传入参数</span><br>        SpringApplication.run(DeptProvider_8001.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="消费者层"><a href="#消费者层" class="headerlink" title="消费者层"></a>消费者层</h3><ul>
+<li>主要负责接口，与前端打交道</li>
+</ul>
+<p><strong>springcloud-consumer-dept-80</strong></p>
+<h4 id="1、导入依赖"><a href="#1、导入依赖" class="headerlink" title="1、导入依赖"></a>1、导入依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud-consumer-dept-80<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-devtools<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、配置文件"><a href="#2、配置文件" class="headerlink" title="2、配置文件"></a>2、配置文件</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">80</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3、RestTemplate装载入-bean"><a href="#3、RestTemplate装载入-bean" class="headerlink" title="3、RestTemplate装载入 bean"></a>3、RestTemplate装载入 bean</h4><ul>
+<li><code>com.hui.springcloud.config.ConfigBean</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ConfigBean</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> RestTemplate <span class="hljs-title function_">getRestTemplate</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RestTemplate</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="4、控制层"><a href="#4、控制层" class="headerlink" title="4、控制层"></a>4、控制层</h4><ul>
+<li><p><code>RestTemplate</code>：提供多种便捷访问远程http服务的方法，简单的Restful服务模板</p>
+</li>
+<li><p><code>com.hui.springcloud.controller.DeptConsumerController</code></p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeptConsumerController</span> &#123;<br>    <span class="hljs-comment">// 消费者，不应该拥有service层！</span><br>    <span class="hljs-comment">// 需要使用 RestTemplate 请求,</span><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RestTemplate restTemplate;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">REST_URL_PREFIX</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;http://localhost:8001&quot;</span>;<br><br>    <span class="hljs-meta">@RequestMapping(&quot;/consumer/dept/get/&#123;id&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> Dept <span class="hljs-title function_">get</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span> &#123;<br>        <span class="hljs-keyword">return</span> restTemplate.getForObject(REST_URL_PREFIX+<span class="hljs-string">&quot;/dept/get/&quot;</span>+id,Dept.class);<br>    &#125;<br><br>    <span class="hljs-meta">@RequestMapping(&quot;/consumer/dept/add&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">add</span><span class="hljs-params">(Dept dept)</span> &#123;<br>        <span class="hljs-keyword">return</span> restTemplate.postForObject(REST_URL_PREFIX+<span class="hljs-string">&quot;/dept/add&quot;</span>, dept, Boolean.class);<br>    &#125;<br>    <span class="hljs-meta">@RequestMapping(&quot;/consumer/dept/list&quot;)</span><br>    <span class="hljs-keyword">public</span> List&lt;Dept&gt; <span class="hljs-title function_">list</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> restTemplate.getForObject(REST_URL_PREFIX+<span class="hljs-string">&quot;/dept/list&quot;</span>, List.class);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>5、主启动类</p>
+<ul>
+<li><code>com.hui.springcloud.DeptConsumer_80</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeptConsumer_80</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(DeptConsumer_80.class, args);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>访问时访问：<code>http://localhost/consumer/dept/get/2</code></p>
+<h2 id="Eureka-服务注册发现"><a href="#Eureka-服务注册发现" class="headerlink" title="Eureka 服务注册发现"></a>Eureka 服务注册发现</h2><ul>
+<li><p>是Netflix子模块，是基于REST服务，用于定位服务，以实现云端中间层服务发现和故障转义</p>
+</li>
+<li><p>有了该模块只需要使用服务的标识符，就可以访问到服务，不需要修改服务调用的配置文件了</p>
+</li>
+<li><p>类似于Dubbo的注册中心，比如Zookeeeper</p>
+</li>
+<li><p>使用C&#x2F;S 架构，EurekaServer作为服务注册功能的服务器，是服务注册中心（手动写）</p>
+</li>
+</ul>
+<h3 id="三大角色"><a href="#三大角色" class="headerlink" title="三大角色"></a>三大角色</h3><ul>
+<li>Eureka Server：提供服务的注册用于发现</li>
+<li>Service Provider：自身服务注册到Eureka中，使消费方能找到</li>
+<li>Service Consumer：服务消费从Eureka中获取注册服务列表，从而找到消费服务</li>
+</ul>
+<p><img src="/java-spring-Cloud/image-20210407200218415.png" srcset="/img/loading.gif" lazyload alt="分为三个不同的角色"></p>
+<h3 id="Hello-Eureka"><a href="#Hello-Eureka" class="headerlink" title="Hello Eureka"></a>Hello Eureka</h3><h4 id="1、导入依赖-1"><a href="#1、导入依赖-1" class="headerlink" title="1、导入依赖"></a>1、导入依赖</h4><ul>
+<li><code>springcloud-eureka-7001</code>项目</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.0.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-devtools<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>编写配置文件</strong></p>
+<ul>
+<li><strong>注册中心</strong>需要配置：<ul>
+<li><code>register-with-eureka</code>：false</li>
+<li><code>fetch-registry</code>: false</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">7001</span><br><br><span class="hljs-attr">eureka:</span><br>  <span class="hljs-attr">instance:</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">localhost</span> <span class="hljs-comment"># 服务端的实例名称</span><br>  <span class="hljs-attr">client:</span><br>    <span class="hljs-attr">register-with-eureka:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 表示是否向eureka 中心注册自己</span><br>    <span class="hljs-attr">fetch-registry:</span> <span class="hljs-literal">false</span> <span class="hljs-comment"># 值为false表示自己为注册中心</span><br>    <span class="hljs-attr">service-url:</span> <span class="hljs-comment"># 监控的页面</span><br>      <span class="hljs-attr">defaultZone:</span> <span class="hljs-string">http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/</span><br></code></pre></td></tr></table></figure>
+
+<p><u>分析源码后，需要重写eureka 的服务地址</u></p>
+<p><img src="/java-spring-Cloud/image-20210407201157097.png" srcset="/img/loading.gif" lazyload alt="eureka.client.service-url.defaultZone"></p>
+<p><strong>开启服务</strong></p>
+<ul>
+<li>在主启动类加上注解</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@EnableEurekaServer</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@EnableEurekaServer</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">EurekaServer_7001</span> &#123;<br>    ...<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、client加入eureka-server"><a href="#2、client加入eureka-server" class="headerlink" title="2、client加入eureka server"></a>2、client加入eureka server</h4><ul>
+<li>client：<code>springcloud-provider-dept-8001</code></li>
+</ul>
+<p><strong>导入client依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-eureka<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.4.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>配置文件</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Eureka 配置，服务注册到哪里</span><br><span class="hljs-attr">eureka:</span><br>  <span class="hljs-attr">client:</span><br>    <span class="hljs-attr">service-url:</span><br>      <span class="hljs-attr">defaultZone:</span> <span class="hljs-string">http://localhost:7001/eureka/</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>主启动类添加注解</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@EnableEurekaClient</span>  <span class="hljs-comment">// 客户端自动注册到服务端</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeptProvider_8001</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(DeptProvider_8001.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="备注类-，监控信息"><a href="#备注类-，监控信息" class="headerlink" title="备注类 ，监控信息"></a>备注类 ，监控信息</h3><p>备注类主要用于首页点击接口进去后的<strong>描述</strong></p>
+<h4 id="1-导入依赖"><a href="#1-导入依赖" class="headerlink" title="1. 导入依赖"></a>1. 导入依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--actuator 完善监控信息--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h4><ul>
+<li>这里<code>info</code>内的信息随便写，xxxx.name</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">info:</span><br>  <span class="hljs-attr">app.name:</span> <span class="hljs-number">123</span><br>  <span class="hljs-attr">compny.name:</span> <span class="hljs-string">hhhhh</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-添加注解"><a href="#3-添加注解" class="headerlink" title="3.添加注解"></a>3.添加注解</h4><ul>
+<li>在主启动类添加注解<code>@EnableDiscoveryClient</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@EnableEurekaClient</span>  <span class="hljs-comment">// 客户端自动注册到服务端</span><br><span class="hljs-meta">@EnableDiscoveryClient</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DeptProvider_8001</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 运行该类，传入参数</span><br>        SpringApplication.run(DeptProvider_8001.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<p><img src="/java-spring-Cloud/image-20210409184543451.png" srcset="/img/loading.gif" lazyload alt="效果"></p>
+<p>备注一个拿到当前运行类关键信息的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.cloud.client.discovery.DiscoveryClient;<br><br><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> DiscoveryClient client;<br><span class="hljs-meta">@GetMapping(&quot;/info&quot;)</span><br><span class="hljs-keyword">public</span> Object <span class="hljs-title function_">discovery</span><span class="hljs-params">()</span> &#123;<br>    List&lt;String&gt; services = client.getServices();<br>    System.out.println(services);<br><br>    List&lt;ServiceInstance&gt; instances = client.getInstances(<span class="hljs-string">&quot;springcloud-provider-dept&quot;</span>);<br>    <span class="hljs-keyword">for</span> (ServiceInstance instance : instances) &#123;<br>        System.out.println(<span class="hljs-string">&quot;1111=&gt;&quot;</span>+instance);<br>    &#125;<br>    <span class="hljs-keyword">return</span> instances;<br>&#125; <br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="网关api-Zuul"><a href="#网关api-Zuul" class="headerlink" title="网关api  Zuul"></a>网关api  Zuul</h2><ul>
+<li>用户访问微服务时：最先通过<code>网关</code></li>
+<li>提供<code>路由</code>和<code>过滤</code>两个功能</li>
+<li>Zuul 服务最终会注册进<code>Eureka</code></li>
+<li>实现外部访问统一入口</li>
+</ul>
+<p>依赖！！最好全部最新版本！！大坑</p>
+<p>否则会出现xxxxx.xml<code> cannot be opened because it does not exist</code> </p>
+<h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">		 <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud-zuul-9528<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-zuul<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>		<span class="hljs-comment">&lt;!--Hystarix 依赖 和它的监控--&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-hystrix<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>		<span class="hljs-comment">&lt;!--Ribbon--&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-ribbon<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.4.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-comment">&lt;!--erueka--&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-eureka<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.4.7.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.example<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>springcloud-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-devtools<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/26/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/03/spring-source/">
+                        <span class="hidden-mobile">spring-source</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

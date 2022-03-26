@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="springboot源码分析yml加载流程基础配置yml的导入 双击shift搜索web，auto，找到源码后进入分析    快捷键 ctrl + k + ctrl + 1 折叠代码 找到addResourceHandlers类，分析源码  12345678910111213141516protected void addResourceHandlers(ResourceHandlerRegist">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/spring-source/image-20210403193201249.png">
-<meta property="og:image" content="http://example.com/spring-source/image-20210403193526035.png">
+<meta property="og:image" content="http://example.com/.com//image-20210403193201249.png">
+<meta property="og:image" content="http://example.com/.com//image-20210403193526035.png">
 <meta property="article:published_time" content="2021-04-03T09:18:14.000Z">
 <meta property="article:modified_time" content="2021-04-03T11:38:52.972Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/spring-source/image-20210403193201249.png">
+<meta name="twitter:image" content="http://example.com/.com//image-20210403193201249.png">
   
   
   <title>spring-source - Hexo</title>
@@ -243,7 +243,7 @@
               <h2 id="springboot源码分析"><a href="#springboot源码分析" class="headerlink" title="springboot源码分析"></a>springboot源码分析</h2><h3 id="yml加载流程"><a href="#yml加载流程" class="headerlink" title="yml加载流程"></a>yml加载流程</h3><h3 id="基础配置yml的导入"><a href="#基础配置yml的导入" class="headerlink" title="基础配置yml的导入"></a>基础配置yml的导入</h3><ol>
 <li>双击<code>shift</code>搜索web，<code>auto</code>，找到源码后进入分析</li>
 </ol>
-<p><img src="/spring-source/image-20210403193201249.png" srcset="/img/loading.gif" lazyload alt="image-20210403193201249"></p>
+<p><img src="/.com//image-20210403193201249.png" srcset="/img/loading.gif" lazyload alt="image-20210403193201249"></p>
 <ol start="2">
 <li>快捷键 <code>ctrl + k + ctrl + 1</code> 折叠代码</li>
 <li>找到<code>addResourceHandlers</code>类，分析源码</li>
@@ -252,7 +252,7 @@
 
 
 
-<p><img src="/spring-source/image-20210403193526035.png" srcset="/img/loading.gif" lazyload alt="分析静态文件加载区域"></p>
+<p><img src="/.com//image-20210403193526035.png" srcset="/img/loading.gif" lazyload alt="分析静态文件加载区域"></p>
 <p>其作用域默认如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;<span class="hljs-string">&quot;classpath:/META-INF/resources/&quot;</span>, <span class="hljs-string">&quot;classpath:/resources/&quot;</span>, <span class="hljs-string">&quot;classpath:/static/&quot;</span>, <span class="hljs-string">&quot;classpath:/public/&quot;</span>&#125;<br></code></pre></td></tr></table></figure>
 

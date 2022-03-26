@@ -23,18 +23,18 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="基本数据类型和引用数据类型基本数据类型Java中有八种基本数据类型，都是Java语言预先定义好的，并且是关键字。 这八种基本类型分别是：  整型 （4种）byte，short，int，long 字符型 （1种）char 浮点型 （2种）float，double 布尔型（1种）boolean     No. 数据类型 大小&#x2F;位 可表示数据范围 默认值    1 byte（字节型） 8 -1">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/java-base/image-20210301185653429.png">
-<meta property="og:image" content="http://example.com/java-base/image-20210301190301584.png">
-<meta property="og:image" content="http://example.com/java-base/image-20210301190926957.png">
-<meta property="og:image" content="http://example.com/java-base/image-20210301205908883.png">
-<meta property="og:image" content="http://example.com/java-base/image-20210301211645206.png">
+<meta property="og:image" content="http://example.com/.com//image-20210301185653429.png">
+<meta property="og:image" content="http://example.com/.com//image-20210301190301584.png">
+<meta property="og:image" content="http://example.com/.com//image-20210301190926957.png">
+<meta property="og:image" content="http://example.com/.com//image-20210301205908883.png">
+<meta property="og:image" content="http://example.com/.com//image-20210301211645206.png">
 <meta property="article:published_time" content="2021-03-01T08:01:37.000Z">
 <meta property="article:modified_time" content="2021-03-28T10:24:22.522Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="基础">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/java-base/image-20210301185653429.png">
+<meta name="twitter:image" content="http://example.com/.com//image-20210301185653429.png">
   
   
   <title>Java-基本类型与面向对象 - Hexo</title>
@@ -328,10 +328,10 @@
 </ul>
 </li>
 </ul>
-<p><img src="/java-base/image-20210301185653429.png" srcset="/img/loading.gif" lazyload alt="数据在栈和堆中"></p>
+<p><img src="/.com//image-20210301185653429.png" srcset="/img/loading.gif" lazyload alt="数据在栈和堆中"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">msg</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>    <br>    <span class="hljs-comment">// 在将msg给fun方法时，开辟为temp开辟新的内存空间</span><br>    fun(msg);<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fun</span><span class="hljs-params">(<span class="hljs-type">int</span> temp)</span>&#123;<br>    temp = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-comment">// 结束调用时释放temp开辟的内存</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/java-base/image-20210301190301584.png" srcset="/img/loading.gif" lazyload alt="栈中状态"></p>
+<p><img src="/.com//image-20210301190301584.png" srcset="/img/loading.gif" lazyload alt="栈中状态"></p>
 <ul>
 <li>引用变量类型<ul>
 <li>只要是<code>引用数据类型</code>变量，其<strong>具体内容</strong>都是存放在<strong>堆</strong>中的，而<strong>栈中</strong>存放的是其<strong>具体内容</strong>所在<strong>内存的地址</strong></li>
@@ -340,7 +340,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>    <span class="hljs-comment">// 1 初态时，初始化book 类型</span><br>    <span class="hljs-type">Book</span> <span class="hljs-variable">book</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Book</span>(<span class="hljs-string">&quot;Java开发指南&quot;</span>,<span class="hljs-number">66.6</span>);<br>    <br>    <span class="hljs-comment">// 2 调用方法：调用时开辟新的temp栈，指向原有引用变量栈堆</span><br>    fun(book);<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fun</span><span class="hljs-params">(Book temp)</span>&#123;<br>    <span class="hljs-comment">// 3 设置值</span><br>    temp.setPrice(<span class="hljs-number">99.9</span>);<br>    <span class="hljs-comment">// 4 结束时释放引用数据类型temp</span><br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Book</span>&#123;<br>    String name;<br>    <span class="hljs-type">double</span> price;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Book</span><span class="hljs-params">(String name,<span class="hljs-type">double</span> price)</span>&#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.price = price;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPrice</span><span class="hljs-params">(<span class="hljs-type">double</span> price)</span>&#123;<br>        <span class="hljs-built_in">this</span>.price = price;<br>        <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/java-base/image-20210301190926957.png" srcset="/img/loading.gif" lazyload alt="引用类型在堆栈中的位置"></p>
+<p><img src="/.com//image-20210301190926957.png" srcset="/img/loading.gif" lazyload alt="引用类型在堆栈中的位置"></p>
 <p>三种常见的引用时变量赋值：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;myString&quot;</span>);<br><span class="hljs-type">String</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;myString&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s3</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;my&quot;</span> + <span class="hljs-string">&quot;String&quot;</span>;<br></code></pre></td></tr></table></figure>
 
@@ -355,7 +355,7 @@
 <li><p>然后在内存堆中开辟一块空间存放new出来的String实例，在栈中开辟一块空间，命名为“s1”，存放的值为堆中String实例的内存地址，这个<strong>过程</strong>就是将引用<strong>s1指向new出来的String实例</strong></p>
 </li>
 </ul>
-<p><img src="/java-base/image-20210301205908883.png" srcset="/img/loading.gif" lazyload alt="引用时变量赋值"></p>
+<p><img src="/.com//image-20210301205908883.png" srcset="/img/loading.gif" lazyload alt="引用时变量赋值"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;hello&quot;</span>);      <br><span class="hljs-type">String</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">s3</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br>System.out.println(s1 == s2); <span class="hljs-comment">// false 比较两个引用地址 （s2-&gt; 常量池地址） （s1 -&gt; String对象地址）</span><br>System.out.println(s1.equals(s2)); <span class="hljs-comment">// true  equals()比较字符串的内容</span><br>System.out.println(s1 == s3); <span class="hljs-comment">//false       每个String 对象都不是不同的，引用地址也不同</span><br></code></pre></td></tr></table></figure>
 
 
@@ -369,7 +369,7 @@
 <li><p>然后在栈中开辟一块空间，命名为“s1”，存放的值为常量池中“myString”的内存地址</p>
 </li>
 </ul>
-<p><img src="/java-base/image-20210301211645206.png" srcset="/img/loading.gif" lazyload alt="赋值定义"></p>
+<p><img src="/.com//image-20210301211645206.png" srcset="/img/loading.gif" lazyload alt="赋值定义"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br><span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;hello&quot;</span>;<br>System.out.println(str1 == str2); <span class="hljs-comment">// 返回true</span><br><span class="hljs-comment">// 因为 == 是判断地址位置。str1没发现hello</span><br><span class="hljs-comment">// 会先到常量池中检查是否有“hello”的存在，发现是没有的，于是在常量池中创建“hello”对象，并将常量池中的引用赋值给str1</span><br><span class="hljs-comment">// 第二个字面量 String str2 = &quot;hello&quot;，在常量池中检测到该对象了，直接将引用赋值给str2</span><br></code></pre></td></tr></table></figure>
 
 <p>第三种：使用+号连接</p>

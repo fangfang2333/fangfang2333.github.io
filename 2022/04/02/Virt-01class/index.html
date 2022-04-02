@@ -19,19 +19,19 @@
     <meta name="description" content="【理论】虚拟化技术学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚拟化技术基础">
-<meta property="og:url" content="https://fangfang2333.github.io/2022/04/02/xxxx/index.html">
+<meta property="og:url" content="https://fangfang2333.github.io/2022/04/02/Virt-01class/index.html">
 <meta property="og:site_name" content="fang233 的随笔">
 <meta property="og:description" content="【理论】虚拟化技术学习笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://fangfang2333.github.io/2022/04/02/xxxx/image-20220402221424552.png">
-<meta property="og:image" content="https://fangfang2333.github.io/2022/04/02/xxxx/image-20220402140428926.png">
-<meta property="og:image" content="https://fangfang2333.github.io/2022/04/02/xxxx/image-20220402195709951.png">
-<meta property="article:published_time" content="2022-04-02T06:18:19.000Z">
-<meta property="article:modified_time" content="2022-04-02T14:14:31.311Z">
+<meta property="og:image" content="https://fangfang2333.github.io/2022/04/02/Virt-01class/image-20220402221424552.png">
+<meta property="og:image" content="https://fangfang2333.github.io/2022/04/02/Virt-01class/image-20220402140428926.png">
+<meta property="og:image" content="https://fangfang2333.github.io/2022/04/02/Virt-01class/image-20220402195709951.png">
+<meta property="article:published_time" content="2022-04-02T06:18:12.000Z">
+<meta property="article:modified_time" content="2022-04-02T14:20:01.609Z">
 <meta property="article:author" content="fangfang2333">
 <meta property="article:tag" content="虚拟化技术">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://fangfang2333.github.io/2022/04/02/xxxx/image-20220402221424552.png">
+<meta name="twitter:image" content="https://fangfang2333.github.io/2022/04/02/Virt-01class/image-20220402221424552.png">
   
   
   <title>虚拟化技术基础 - fang233 的随笔</title>
@@ -201,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      914 字
+      904 字
     </span>
   
 
@@ -242,7 +242,7 @@
             <h1 style="display: none">虚拟化技术基础</h1>
             
             <div class="markdown-body">
-              <h1 id="小猪猪的笔记3-4月"><a href="#小猪猪的笔记3-4月" class="headerlink" title="小猪猪的笔记3-4月"></a>小猪猪的笔记3-4月</h1><h1 id="虚拟化技术"><a href="#虚拟化技术" class="headerlink" title="虚拟化技术"></a>虚拟化技术</h1><h2 id="虚拟化技术课"><a href="#虚拟化技术课" class="headerlink" title="虚拟化技术课"></a>虚拟化技术课</h2><p><code>虚拟机模板</code>：由虚拟机转换成模板，按照客户需要的方式进行部署</p>
+              <h1 id="虚拟化技术"><a href="#虚拟化技术" class="headerlink" title="虚拟化技术"></a>虚拟化技术</h1><h2 id="虚拟化技术课"><a href="#虚拟化技术课" class="headerlink" title="虚拟化技术课"></a>虚拟化技术课</h2><p><code>虚拟机模板</code>：由虚拟机转换成模板，按照客户需要的方式进行部署</p>
 <p><code>虚拟机</code>：本质上就是运行上的实例，由计算存储网络组合而成</p>
 <p>虚拟机模板和虚拟机的关系：</p>
 <ul>
@@ -257,10 +257,10 @@
 <p>！！切换视图至<code>虚拟机和模板</code>视图中可以看见所有的虚拟机和模板</p>
 <h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p><code>模板</code>：可以<em>克隆</em>、<em>转换成虚拟机</em>、<em>从该模板部署虚拟机</em>（不会删除模板，等于个性化操作）</p>
 <p><code>虚拟机</code>：可以 <em>克隆为模板</em>（不会删除虚拟机），<em>转换成模板</em></p>
-<p><img src="/2022/04/02/xxxx/image-20220402221424552.png" srcset="/img/loading.gif" lazyload alt="虚拟机和模板的关系"></p>
+<p><img src="/2022/04/02/Virt-01class/image-20220402221424552.png" srcset="/img/loading.gif" lazyload alt="虚拟机和模板的关系"></p>
 <h3 id="虚拟机热迁移"><a href="#虚拟机热迁移" class="headerlink" title="虚拟机热迁移"></a>虚拟机热迁移</h3><p><code>热迁移</code>：将正在运行的实例从一台主机迁移到另外一台主机的过程，期间用户无感知，<strong>业务不中断</strong></p>
 <p>虚拟机热迁移分为<code>存储热迁移（更改数据存储）</code>，<code>内存热迁移（更改主机模式）</code>，<code>无共享热迁移（主机和数据存储一起）</code></p>
-<p><img src="/2022/04/02/xxxx/image-20220402140428926.png" srcset="/img/loading.gif" lazyload alt="vcenten上三种热迁移方式"></p>
+<p><img src="/2022/04/02/Virt-01class/image-20220402140428926.png" srcset="/img/loading.gif" lazyload alt="vcenten上三种热迁移方式"></p>
 <h4 id="热迁移条件"><a href="#热迁移条件" class="headerlink" title="热迁移条件"></a>热迁移条件</h4><p><strong>虚拟机热迁移的条件：</strong>从 虚拟机自身，主机（计算 存储 网络 ） 这几方面来考虑</p>
 <ul>
 <li><p>虚拟机要正在运行，过程中不能对虚拟机进行重启，下电操作</p>
@@ -278,7 +278,7 @@
 </li>
 </ul>
 <p>如果不满足以上某一项则无法完成热迁移：</p>
-<p><img src="/2022/04/02/xxxx/image-20220402195709951.png" srcset="/img/loading.gif" lazyload alt="不满足共享存储的需求"></p>
+<p><img src="/2022/04/02/Virt-01class/image-20220402195709951.png" srcset="/img/loading.gif" lazyload alt="不满足共享存储的需求"></p>
 <p>出现以上情况，还需要进行热迁移的话，我们得：① 将虚拟机先迁移到共享存储上（更改数据存储），②再跨主机进行迁移（更改主机）</p>
 <h4 id="热迁移过程"><a href="#热迁移过程" class="headerlink" title="热迁移过程"></a>热迁移过程</h4><p>默认情况下，我们讲的热迁移就是<strong>更改主机热迁移</strong>（内存热迁移）</p>
 <p><code>初始内存</code>：在开始热迁移之前，虚拟机上面的内存</p>
